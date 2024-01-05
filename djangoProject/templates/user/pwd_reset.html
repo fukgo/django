@@ -1,0 +1,16 @@
+{% extends "article/base.html" %} {% load static %}
+{% block title%}密码重置{% endblock title%}
+{% block content %}
+    <h1>密码重置</h1>
+{% if messages %}
+    {% for message in messages %}
+        <div>{{ message }}</div>
+    {% endfor %}
+{% endif %}
+<form method="POST" action="{% url 'password_reset' %}">
+    {% csrf_token %}
+    <label for="refind">请输入您注册时的邮箱或用户名</label>
+    <input type="text" name="email_or_username" placeholder="***@gmail.com" id="refind">
+    <input type="submit" value="提交">
+</form>
+{% endblock content %}
